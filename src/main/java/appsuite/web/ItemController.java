@@ -1,7 +1,8 @@
-package web;
+package appsuite.web;
 
 import java.util.Collection;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,16 +10,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClientException;
 
-import domain.Item;
-import service.ItemServiceImpl;
+import appsuite.domain.Item;
+import appsuite.service.ItemService;
+import appsuite.service.ItemServiceImpl;
 
 @RestController
 public class ItemController {
 
-	//@Autowired(required=false)
-	private ItemServiceImpl itemService = new ItemServiceImpl();
+	@Autowired
+	private ItemService itemService = new ItemServiceImpl();
 
-	@RequestMapping(value = "/items", method = RequestMethod.GET)
+	@RequestMapping(value = "/v2/items", method = RequestMethod.GET)
 	public ResponseEntity<Collection<Item>> getAssets() {
 		Collection<Item> items = null;
 		try {
@@ -29,7 +31,5 @@ public class ItemController {
 		}
 		return new ResponseEntity<Collection<Item>>(items, HttpStatus.OK);
 	}
-	
-	
 
 }
