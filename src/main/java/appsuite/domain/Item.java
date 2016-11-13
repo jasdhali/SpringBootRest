@@ -1,5 +1,10 @@
 package appsuite.domain;
 
+/**
+ * 
+ * @author jaspal
+ *
+ */
 public class Item {
 	private String itemId;
 	private String itemSku;

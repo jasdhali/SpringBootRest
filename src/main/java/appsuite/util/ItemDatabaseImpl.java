@@ -1,6 +1,7 @@
 package appsuite.util;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 import appsuite.domain.Item;
 import appsuite.exceptions.ServiceException;
@@ -10,7 +11,6 @@ public class ItemDatabaseImpl implements ItemDatabase {
 
 	@Override
 	public void createItem(Item item) throws ServiceException {
-		// TODO Auto-generated method stub
 		ItemSeedData.getSeedData().put(item.getItemId(), item);
 	}
 
@@ -21,23 +21,21 @@ public class ItemDatabaseImpl implements ItemDatabase {
 
 	@Override
 	public void updateItem(Item item) throws ServiceException {
-		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void deleteItem(String id) throws ServiceException {
-		/*
-		 * Collection<Item> collectData = ItemSeedData.getSeedData().values();
-		 * for(Iterator<Item> iter : collectData.iterator() ){ if( item.equals(
-		 * id ) ){
-		 * 
-		 * } }
-		 */
+		Collection<Item> collectData = ItemSeedData.getSeedData().values();
+		for (Iterator<Item> iter = collectData.iterator(); iter.hasNext();) {
+			Item it = iter.next();
+			if (it.getItemId().equals(id)) {
+				iter.remove();
+			}
+		}
 	}
 
 	@Override
 	public Collection<Item> getItems() throws ServiceException {
-		// TODO Auto-generated method stub
 		return ItemSeedData.getSeedData().values();
 	}
 

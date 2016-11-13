@@ -7,6 +7,6 @@ import appsuite.exceptions.ServiceException;
 
 public interface ItemService {
 	public Collection<Item> getItems() throws ServiceException;
-
 	public Item getItem(String id) throws ServiceException;
+	public void deleteItem(String id) throws ServiceException;
 }

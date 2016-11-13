@@ -1,6 +1,7 @@
 package appsuite.web;
 
 import java.util.Collection;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,5 +40,24 @@ public class ItemController {
 		Item asset = itemService.getItem(id);
 		return new ResponseEntity<Item>(asset, HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/items/{id}", method = RequestMethod.POST)
+	public ResponseEntity<Item> addItem(@PathVariable("id") String id) throws ServiceException {
+		Item asset = itemService.getItem(id);
+		return new ResponseEntity<Item>(asset, HttpStatus.OK);
+	}
+	
+	private final Logger LOG = Logger.getLogger( "ItemController.class" );
+
+	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> delete(@PathVariable("id") String itemId) throws ServiceException {
+        LOG.info("Deleting fruit with id: {}=>"+ itemId);
+        Item item = itemService.getItem(itemId);
+        if ( item == null) {
+            return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+        }
+        itemService.deleteItem( itemId );
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 
 }
