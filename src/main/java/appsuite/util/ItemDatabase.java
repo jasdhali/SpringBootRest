@@ -5,6 +5,7 @@ import java.util.Collection;
 import appsuite.domain.Item;
 import appsuite.exceptions.ServiceException;
 
+
 public interface ItemDatabase {
 	public void createItem(Item item) throws ServiceException;
 

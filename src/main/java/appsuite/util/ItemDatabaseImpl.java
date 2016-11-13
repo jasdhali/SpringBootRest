@@ -5,6 +5,7 @@ import java.util.Collection;
 import appsuite.domain.Item;
 import appsuite.exceptions.ServiceException;
 
+//@Service
 public class ItemDatabaseImpl implements ItemDatabase {
 
 	@Override

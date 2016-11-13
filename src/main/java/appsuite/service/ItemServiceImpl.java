@@ -2,6 +2,7 @@ package appsuite.service;
 
 import java.util.Collection;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import appsuite.domain.Item;
@@ -11,7 +12,9 @@ import appsuite.util.ItemDatabaseImpl;
 
 @Service
 public class ItemServiceImpl implements ItemService {
-	private ItemDatabase itemDatabase = new ItemDatabaseImpl();
+	
+	//@Autowired
+	private ItemDatabase itemDatabase=new ItemDatabaseImpl();
 
 	public Collection<Item> getItems() throws ServiceException {
 		return itemDatabase.getItems();
