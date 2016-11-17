@@ -31,4 +31,9 @@ public class ItemServiceImpl implements ItemService {
 	public void deleteItem(String id) throws ServiceException{
 		itemDatabase.deleteItem(id);
 	}
+	
+	public void addItem(Item item) throws ServiceException{
+		itemDatabase.createItem(item);
+		
+	}
 }

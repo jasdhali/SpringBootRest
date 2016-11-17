@@ -1,0 +1,10 @@
+appsuite\service\ItemServiceImpl.class
+appsuite\util\ItemDatabase.class
+appsuite\exceptions\ServiceException.class
+appsuite\service\ItemService.class
+appsuite\web\ItemController.class
+appsuite\MyExample.class
+appsuite\util\ItemSeedData.class
+appsuite\Example.class
+appsuite\util\ItemDatabaseImpl.class
+appsuite\domain\Item.class
