@@ -1,12 +1,19 @@
 package appsuite.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * 
  * @author jaspal
  *
  */
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Item {
+	@JsonProperty(value="item_id")
 	private String itemId;
+	@JsonProperty(value="item_sku")
 	private String itemSku;
 	private int reorderQuantity;
 
@@ -20,6 +27,11 @@ public class Item {
 		this.itemId = itemId;
 		this.itemSku = itemSku;
 		this.reorderQuantity = reorderQuantity;
+	}
+
+	public void copyAttributes(Item itemIn) {
+		this.itemSku = itemIn.getItemSku();
+		this.reorderQuantity = itemIn.getReorderQuantity();
 	}
 
 	public String getItemId() {

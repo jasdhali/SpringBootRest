@@ -49,9 +49,16 @@ public class ItemController {
  		 return new ResponseEntity<Item>(itemCreated , HttpStatus.OK);
 	}
 	
+	@RequestMapping(value = "/items", method = RequestMethod.PUT, headers="Accept=application/json")
+	public ResponseEntity<Item> updateItem(@RequestBody Item item) throws ServiceException {
+		 itemService.updateItem(item);
+		 Item itemUpdated = itemService.getItem(item.getItemId() );
+ 		 return new ResponseEntity<Item>(itemUpdated , HttpStatus.OK);
+	}
+	
 	private final Logger LOG = Logger.getLogger( "ItemController.class" );
 
-	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/items/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable("id") String itemId) throws ServiceException {
         LOG.info("Deleting fruit with id: {}=>"+ itemId);
         Item item = itemService.getItem(itemId);
@@ -61,5 +68,4 @@ public class ItemController {
         itemService.deleteItem( itemId );
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
-
 }

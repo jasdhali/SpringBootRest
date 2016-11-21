@@ -36,4 +36,11 @@ public class ItemServiceImpl implements ItemService {
 		itemDatabase.createItem(item);
 		
 	}
+	
+	public void updateItem(Item item) throws ServiceException{
+		Item existintItem = getItem(item.getItemId() );
+		if( existintItem==null) throw new ServiceException("Item with id "+ item.getItemId() +" does not exist.");
+		existintItem.copyAttributes(item);
+		//itemDatabase.createItem(item);
+	}
 }
