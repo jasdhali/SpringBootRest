@@ -20,7 +20,6 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	public Item getItem(String id) throws ServiceException {
-		Collection<Item> data = itemDatabase.getItems();
 		/*
 		 * Stream<Item> element = data.stream().filter( it ->
 		 * it.getItemId().equals(id) ); return element.findFirst();
