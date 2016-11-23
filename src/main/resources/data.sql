@@ -10,3 +10,5 @@ INSERT INTO book(id,name,author,price) VALUES (9,'Java Interview Questions','Sub
 INSERT INTO book(id,name,author,price) VALUES (10,'Java Complete Reference','Herbert', 450);
 
 INSERT INTO item(itemId,itemSku,reorderQuantity) VALUES (1,'Java Complete Reference','Herbert');
+
+INSERT INTO account(id,username,password) VALUES(1,'rbaxter', 'password');
