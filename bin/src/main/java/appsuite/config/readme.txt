@@ -1,1 +1,0 @@
-Package to store spring or spring boot configuration artifacts.
