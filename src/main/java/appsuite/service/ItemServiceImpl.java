@@ -1,9 +1,11 @@
 package appsuite.service;
 
-import java.util.Collection;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import appsuite.data.repository.ItemRepository;
 import appsuite.domain.Item;
 import appsuite.exceptions.ServiceException;
 import appsuite.util.ItemDatabase;
@@ -12,34 +14,39 @@ import appsuite.util.ItemDatabaseImpl;
 @Service
 public class ItemServiceImpl implements ItemService {
 	
+	@Autowired
+	ItemRepository itemRepository;
+	
 	//@Autowired
 	private ItemDatabase itemDatabase=new ItemDatabaseImpl();
 
-	public Collection<Item> getItems() throws ServiceException {
-		return itemDatabase.getItems();
+	public List<Item> getItems() throws ServiceException {
+		return itemRepository.findAll();
+		//return itemDatabase.getItems();
 	}
 
-	public Item getItem(String id) throws ServiceException {
+	public Item getItem(long id) throws ServiceException {
 		/*
 		 * Stream<Item> element = data.stream().filter( it ->
 		 * it.getItemId().equals(id) ); return element.findFirst();
 		 */
-		return itemDatabase.getItemById(id);
+		return itemRepository.findOne(id);
 	}
 	
-	public void deleteItem(String id) throws ServiceException{
-		itemDatabase.deleteItem(id);
+	public void deleteItem(long id) throws ServiceException{
+		itemRepository.delete( id );
 	}
 	
 	public void addItem(Item item) throws ServiceException{
-		itemDatabase.createItem(item);
+		itemRepository.save( item );
 		
 	}
 	
 	public void updateItem(Item item) throws ServiceException{
-		Item existintItem = getItem(item.getItemId() );
-		if( existintItem==null) throw new ServiceException("Item with id "+ item.getItemId() +" does not exist.");
-		existintItem.copyAttributes(item);
+		/*Item existintItem = getItem(item.getId() );
+		if( existintItem==null) throw new ServiceException("Item with id "+ item.getId() +" does not exist.");
+		existintItem.copyAttributes( item );*/
+		itemRepository.save( item );
 		//itemDatabase.createItem(item);
 	}
 }

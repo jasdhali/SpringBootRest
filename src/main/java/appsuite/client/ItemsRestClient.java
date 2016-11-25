@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.apache.commons.codec.binary.Base64;
+//import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -25,8 +25,8 @@ public class ItemsRestClient {
 	 */
 	private static HttpHeaders getHeaders() {
 		String plainCredentials = "bill:abc123";
-		String base64Credentials = new String(Base64.encodeBase64(plainCredentials.getBytes()));
-
+		//String base64Credentials = new String(Base64.encodeBase64(plainCredentials.getBytes()));
+		String base64Credentials = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Basic " + base64Credentials);
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
