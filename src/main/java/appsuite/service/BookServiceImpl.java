@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import appsuite.data.repository.BookNamedQueryRepositoryExample;
+import appsuite.data.repository.BookOwnRepository;
+import appsuite.data.repository.BookQueryRepositoryExample;
+import appsuite.data.repository.BookRepository;
 import appsuite.domain.Book;
 
 @Service

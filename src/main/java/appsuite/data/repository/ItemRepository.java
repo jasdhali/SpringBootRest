@@ -1,4 +1,4 @@
-package appsuite.service;
+package appsuite.data.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
