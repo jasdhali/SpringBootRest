@@ -36,8 +36,8 @@ public class PureJavaClient {
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			Item item = (Item) jaxbUnmarshaller.unmarshal(new StringReader(apiOutput));
 
-			System.out.println(item.getItemId());
-			System.out.println(item.getItemSku());
+			System.out.println(item.getId());
+			System.out.println(item.getSku());
 			System.out.println(item.getReorderQuantity());
 
 		} catch (MalformedURLException e) {

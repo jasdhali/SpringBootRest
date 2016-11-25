@@ -9,11 +9,11 @@ import appsuite.exceptions.ServiceException;
 public interface ItemDatabase {
 	public void createItem(Item item) throws ServiceException;
 
-	public Item getItemById(String id) throws ServiceException;
+	public Item getItemById(Long id) throws ServiceException;
 
 	public void updateItem(Item item) throws ServiceException;
 
-	public void deleteItem(String id) throws ServiceException;
+	public void deleteItem(Long id) throws ServiceException;
 
 	public Collection<Item> getItems() throws ServiceException;
 }

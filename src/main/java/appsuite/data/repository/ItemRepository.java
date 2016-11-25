@@ -2,8 +2,8 @@ package appsuite.data.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import appsuite.domain.Book;
+import appsuite.domain.Item;
 
-public interface ItemRepository extends JpaRepository<Book,Long> {
+public interface ItemRepository extends JpaRepository<Item,Long> {
 
 }

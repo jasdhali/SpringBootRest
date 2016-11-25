@@ -22,7 +22,7 @@ public class BookServiceImpl implements BookService {
 	@Autowired
 	private BookQueryRepositoryExample bookQueryRepository;
 	@Autowired
-	private BookNamedQueryRepositoryExample bookNamedQueryRepository;	
+	private BookNamedQueryRepositoryExample bookNamedQueryRepository;
 
 	public List<Book> findAll() {
 		return bookRepository.findAll();

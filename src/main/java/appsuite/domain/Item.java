@@ -1,5 +1,9 @@
 package appsuite.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -10,44 +14,49 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Entity
 public class Item {
-	@JsonProperty(value="item_id")
-	private String itemId;
-	@JsonProperty(value="item_sku")
-	private String itemSku;
+	@JsonProperty(value="id")
+	@Id
+	private long id;
+	
+	@JsonProperty(value="sku")
+	//@Column(name="SKU")
+	private String sku;
+	
+	@Column(name="REORDERQUANTITY")
 	private int reorderQuantity;
 
 	public Item() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Item(String itemId, String itemSku, int reorderQuantity) {
+	public Item(long itemId, String sku, int reorderQuantity) {
 		super();
-		this.itemId = itemId;
-		this.itemSku = itemSku;
+		this.id = itemId;
+		this.sku = sku;
 		this.reorderQuantity = reorderQuantity;
 	}
 
 	public void copyAttributes(Item itemIn) {
-		this.itemSku = itemIn.getItemSku();
+		this.sku = itemIn.getSku();
 		this.reorderQuantity = itemIn.getReorderQuantity();
 	}
 
-	public String getItemId() {
-		return itemId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setItemId(String itemId) {
-		this.itemId = itemId;
+	public void setItemId(long itemId) {
+		this.id = itemId;
 	}
 
-	public String getItemSku() {
-		return itemSku;
+	public String getSku() {
+		return sku;
 	}
 
-	public void setItemSku(String itemSku) {
-		this.itemSku = itemSku;
+	public void setSku(String itemSku) {
+		this.sku = itemSku;
 	}
 
 	public int getReorderQuantity() {
@@ -57,5 +66,4 @@ public class Item {
 	public void setReorderQuantity(int reorderQuantity) {
 		this.reorderQuantity = reorderQuantity;
 	}
-
 }

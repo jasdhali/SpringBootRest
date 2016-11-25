@@ -1,4 +1,4 @@
-/*package appsuite.security;
+package appsuite.config;
 
 import java.sql.SQLException;
 
@@ -11,8 +11,9 @@ import org.springframework.context.annotation.Configuration;
 
 import oracle.jdbc.pool.OracleDataSource;
 
-//@Configuration
-//@ConfigurationProperties("oracle")
+@Configuration
+@ConfigurationProperties( 
+prefix="oracle")
 public class OracleConfiguration {
     @NotNull
     private String username;
@@ -46,4 +47,4 @@ public class OracleConfiguration {
         dataSource.setFastConnectionFailoverEnabled(true);
         return dataSource;
     }
-}*/
+}

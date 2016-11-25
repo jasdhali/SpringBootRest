@@ -1,7 +1,6 @@
 package appsuite.util;
 
 import java.util.Collection;
-import java.util.Iterator;
 
 import appsuite.domain.Item;
 import appsuite.exceptions.ServiceException;
@@ -11,11 +10,11 @@ public class ItemDatabaseImpl implements ItemDatabase {
 
 	@Override
 	public void createItem(Item item) throws ServiceException {
-		ItemSeedData.getSeedData().put(item.getItemId(), item);
+		ItemSeedData.getSeedData().put(item.getId(), item);
 	}
 
 	@Override
-	public Item getItemById(String id) throws ServiceException {
+	public Item getItemById(Long id) throws ServiceException {
 		return ItemSeedData.getSeedData().get(id);
 	}
 
@@ -34,9 +33,8 @@ public class ItemDatabaseImpl implements ItemDatabase {
 		}
 	}
 */
-
 	@Override
-	public void deleteItem(String id) throws ServiceException {
+	public void deleteItem(Long id) throws ServiceException {
 		ItemSeedData.getSeedData().remove(id);
 	}
 
@@ -44,5 +42,4 @@ public class ItemDatabaseImpl implements ItemDatabase {
 	public Collection<Item> getItems() throws ServiceException {
 		return ItemSeedData.getSeedData().values();
 	}
-
 }
