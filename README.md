@@ -6,3 +6,5 @@ Prerequisites -
 1) Have a local database installed
 2) Username/pssword - scott/tiger
 3) Run script data.sql and schema.sql before starting application >mvn spring-boot:run
+
+11/25/2016 - Adding oracle and Cassandra db access. 
