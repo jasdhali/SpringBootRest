@@ -68,4 +68,9 @@ public class ItemController {
         itemService.deleteItem( itemId );
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
+
+	public void setItemService(ItemService itemService) {
+		this.itemService = itemService;
+	}
+	
 }

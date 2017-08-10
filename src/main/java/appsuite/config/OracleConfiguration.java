@@ -12,8 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import oracle.jdbc.pool.OracleDataSource;
 
 @Configuration
-@ConfigurationProperties( 
-prefix="oracle")
+@ConfigurationProperties( prefix="oracle1")
 public class OracleConfiguration {
     @NotNull
     private String username;

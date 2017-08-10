@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import appsuite.data.repository.ItemRepository;
 import appsuite.domain.Item;
+import appsuite.domain.User;
 import appsuite.exceptions.ServiceException;
 import appsuite.util.ItemDatabase;
 import appsuite.util.ItemDatabaseImpl;
@@ -38,6 +39,7 @@ public class ItemServiceImpl implements ItemService {
 	}
 	
 	public void addItem(Item item) throws ServiceException{
+		
 		itemRepository.save( item );
 		
 	}
@@ -49,4 +51,21 @@ public class ItemServiceImpl implements ItemService {
 		itemRepository.save( item );
 		//itemDatabase.createItem(item);
 	}
+	
+	
+    @Override
+	public boolean exists(Item item) throws ServiceException{
+        return findByName(item.getSku()) != null;
+	}
+	
+    @Override
+    public Item findByName(String sku) throws ServiceException{
+        for (Item item : getItems()){
+            if (item.getSku().equals( sku )){
+                return item;
+            }
+        }
+        return null;
+    }
+	
 }

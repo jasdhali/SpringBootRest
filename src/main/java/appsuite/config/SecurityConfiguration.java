@@ -1,4 +1,4 @@
-package appsuite.config;
+/*package appsuite.config;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -31,12 +31,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 @EnableAutoConfiguration
 public class SecurityConfiguration {
 
-	/*
+	
 	 * public static void main(String[] args) {
 	 * SpringApplication.run(SecurityBean.class, args); }
-	 */
+	 
 
-	/*
+	
 	 * @Bean CommandLineRunner init(final AccountRepository accountRepository) {
 	 * 
 	 * return new CommandLineRunner() {
@@ -48,7 +48,7 @@ public class SecurityConfiguration {
 	 * };
 	 * 
 	 * }
-	 */
+	 
 
 }
 
@@ -91,4 +91,4 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().anyRequest().fullyAuthenticated().and().httpBasic().and().csrf().disable();
 	}
 
-}
+}*/
