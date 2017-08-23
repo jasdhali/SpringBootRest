@@ -3,8 +3,10 @@ package appsuite.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import appsuite.domain.Book;
@@ -33,8 +35,14 @@ public class BooksController {
 		book.setId(id);
 		bookService.delete(id);
 	}
-	@RequestMapping(value = "/")
+	
+	@RequestMapping(method = RequestMethod.GET,  value = "/" , produces= {MediaType.APPLICATION_JSON_VALUE})
 	public List<Book> getBooks() {
+		return bookService.findAll();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET,  value = "/xml" , produces= {MediaType.APPLICATION_XML_VALUE})
+	public List<Book> getBooksXML() {
 		return bookService.findAll();
 	}
 	@RequestMapping(value = "/{id}")

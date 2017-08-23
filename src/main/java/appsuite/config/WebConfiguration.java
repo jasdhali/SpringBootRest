@@ -1,4 +1,4 @@
-package appsuite.config;
+/*package appsuite.config;
 
 import org.h2.server.web.WebServlet;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
@@ -13,4 +13,4 @@ public class WebConfiguration {
         registrationBean.addUrlMappings("/console/*");
         return registrationBean;
     }
-}
+}*/

@@ -19,6 +19,12 @@ public class Book implements Serializable{
 	String author;
 	@Column(name="price")
 	long price;	
+	
+	
+	public Book() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public String getAuthor() {
 		return author;
 	}
@@ -42,5 +48,13 @@ public class Book implements Serializable{
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public Book(long id, String name, String author, long price) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.author = author;
+		this.price = price;
 	}	
+	
 }
