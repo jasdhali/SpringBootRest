@@ -6,3 +6,4 @@ Prerequisites -
 1) Have a local database installed
 2) Username/pssword - scott/tiger
 3) Run script data.sql and schema.sql before starting application >mvn spring-boot:run
+4) Creating new Jenkins project.
