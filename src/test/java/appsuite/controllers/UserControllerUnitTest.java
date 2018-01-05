@@ -1,8 +1,5 @@
 package appsuite.controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
@@ -14,7 +11,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -23,19 +19,29 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import appsuite.domain.User;
 import appsuite.service.UserService;
 import appsuite.web.UserController;
 
+@RunWith(SpringRunner.class)
+@WebMvcTest(value=UserController.class)
 public class UserControllerUnitTest {
-	private static final int UNKNOWN_ID = Integer.MAX_VALUE;		
+	private static final int UNKNOWN_ID = Integer.MAX_VALUE;
+	
+	@Autowired
 	private MockMvc mockMvc;
 	//MockMvc is the main entry point for server-side Spring MVC test support. 
 	//Perform a request and return a type that allows chaining further actions, such as asserting 
@@ -183,6 +189,7 @@ Verify that after the response, no more interactions are made to the UserService
     @Test
     public void test_create_user_fail_409_conflict() throws Exception {
         User user = new User("username exists");
+        String jsonUser = asJsonString(user);
         when(userService.exists(user)).thenReturn(true);
         mockMvc.perform(
                 post("/users")
